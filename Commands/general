@@ -1,0 +1,6 @@
+[0;32m- List of open files in given port:[0m 
+ 	[31mlsof -i :[0m[34mport[0m[31m
+[0m
+[0;32m- Print content on STDOUT:[0m 
+ 	[31mecho [0m[34mcontent[0m[31m
+[0m
