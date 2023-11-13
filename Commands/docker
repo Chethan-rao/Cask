@@ -1,0 +1,51 @@
+[0;32m- List all docker containers (running and stopped):[0m 
+ 	[31mdocker ps -a
+[0m
+[0;32m- List docker images present locally:[0m 
+ 	[31mdocker images
+[0m
+[0;32m- Docker Run does 2 things. Pull and Start the container. -p Port binding. --net Network in which container has to be laucned:[0m 
+ 	[31mdocker run -d  -p [0m[34mhost_port[0m[31m:[0m[34mcontainer_port[0m[31m  --name [0m[34mcontainer_name[0m[31m  -e [0m[34mENV_VAR[0m[31m  --net [0m[34mnetwork[0m[31m  [0m[34mimage_name[0m[31m
+[0m
+[0;32m- Open an interactive terminal inside container:[0m 
+ 	[31mdocker exec -it [0m[34mcontainer_id[0m[31m bash
+[0m
+[0;32m- Start a stopped container or stop a container:[0m 
+ 	[31mdocker start|stop [0m[34mcontainer_id[0m[31m
+[0m
+[0;32m- Delete the container:[0m 
+ 	[31mdocker rm [0m[34mcontainer_id[0m[31m
+[0m
+[0;32m- Delete all the containers:[0m 
+ 	[31mdocker rm $(docker ps -aq)
+[0m
+[0;32m- Delete image:[0m 
+ 	[31mdocker rmi [0m[34mimage_name[0m[31m
+[0m
+[0;32m- Build an image from Dockerfile:[0m 
+ 	[31mdocker build -t [0m[34mimage_name[0m[31m [0m[34mpath_where_Dockerfile_exist[0m[31m
+[0m
+[0;32m- Tag or Rename an image:[0m 
+ 	[31mdocker tag [0m[34mcurrent_image_name[0m[31m:[0m[34mcurrent_version[0m[31m [0m[34mnew_image_name[0m[31m:[0m[34mnew_version[0m[31m
+[0m
+[0;32m- Save an image to .tar file:[0m 
+ 	[31mdocker save [0m[34mimage_name[0m[31m [0m[34mgreater_than[0m[31m [0m[34mfile_name.tar[0m[31m
+[0m
+[0;32m- Load an image from .tar file:[0m 
+ 	[31mdocker load -i [0m[34mtar_file[0m[31m
+[0m
+[0;32m- Logs of a container in real time:[0m 
+ 	[31mdocker logs -f [0m[34mcontainer_id[0m[31m
+[0m
+[0;32m- List all docker networks:[0m 
+ 	[31mdocker network ls
+[0m
+[0;32m- Create a new docker network:[0m 
+ 	[31mdocker network create [0m[34mnetwork[0m[31m
+[0m
+[0;32m- Start all containers in yaml file:[0m 
+ 	[31mdocker-compose -f [0m[34myaml_file[0m[31m up -d
+[0m
+[0;32m- Stop all containers in yaml file:[0m 
+ 	[31mdocker-compose -f [0m[34myaml_file[0m[31m down -d
+[0m

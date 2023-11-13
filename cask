@@ -1,0 +1,140 @@
+#!/bin/bash
+
+# Command-line tool to save and list commands based on domains
+
+# Directory to store command files
+COMMAND_DIR="${HOME}/Documents/MyTools/Cask/Commands"
+
+# ANSI escape codes for colors
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+MAGENTA='\033[0;35m'
+NC='\033[0m'  # No Color
+RED='\033[0;31m'
+
+
+# Function to save a command
+save_command() {
+    domain="general"
+    command=""
+    description=""
+
+    while getopts ":d:c:t:" opt; do
+        case "$opt" in
+            d) domain="$OPTARG" ;;
+            c) command="$OPTARG" ;;
+            t) description="$OPTARG" ;;
+            \?) echo "Invalid option: -$OPTARG" >&2
+                exit 1 ;;
+            :) echo "Option -$OPTARG requires an argument." >&2
+                exit 1 ;;
+        esac
+    done
+
+    if [ -z "$command" ]; then
+        echo "Error: Command cannot be empty."
+        exit 1
+    fi
+
+    formatted_text=$(awk 'BEGIN{RS="<"; FS=">"; OFS=""} {
+        if(NF > 1) {
+            gsub(/[^>]+/, "\033[34m&\033[0m", $1);
+            $2="\033[31m"$2"\033[0m"
+        } else {
+            $1="\033[31m"$1"\033[0m"
+        }
+        printf "%s", $0
+        }' <<< "$command")
+
+    # Create directory if it doesn't exist
+    mkdir -p "$COMMAND_DIR"
+
+    # Save the command with description to the domain file
+    echo -e "${GREEN}- $description:${NC} \n \t$formatted_text" >> "$COMMAND_DIR/$domain"
+
+    echo "Command saved in the '$domain' domain."
+}
+
+# Function to list commands in a domain
+list_commands() {
+    domain="general"
+
+    while getopts ":d:" opt; do
+        case "$opt" in
+            d) domain="$OPTARG" ;;
+            \?) echo "Invalid option: -$OPTARG" >&2
+                exit 1 ;;
+            :) echo "Option -$OPTARG requires an argument." >&2
+                exit 1 ;;
+        esac
+    done
+
+    echo "Commands in the '$domain' domain:"
+    echo "-----------------------------"
+
+    # Display the contents of the domain file (commands with colored descriptions)
+    if [ -f "$COMMAND_DIR/$domain" ]; then
+        while IFS= read -r line; do
+            # Check if the line starts with a '-' (indicating a command with description)
+            if [[ "$line" == -* ]]; then
+                # Extract the description and command parts
+                description=$(echo "$line" | cut -d ":" -f 2-)
+                command=$(echo "$line" | cut -d ":" -f 1)
+                
+                # Add a tab space after the description and print
+                printf "%s:\t%s\n" "$command" "$description"
+            else
+                # Print lines without commands (e.g., separators)
+                echo "$line"
+            fi
+        done < "$COMMAND_DIR/$domain"
+    else
+        echo "No commands found in the '$domain' domain."
+    fi
+}
+
+# Function to search for a command in a domain
+search_command() {
+    domain="general"
+    keyword=""
+
+    while getopts ":d:k:" opt; do
+        case "$opt" in
+            d) domain="$OPTARG" ;;
+            k) keyword="$OPTARG" ;;
+            \?) echo "Invalid option: -$OPTARG" >&2
+                exit 1 ;;
+            :) echo "Option -$OPTARG requires an argument." >&2
+                exit 1 ;;
+        esac
+    done
+
+    echo "Searching for '$keyword' in the '$domain' domain:"
+    echo "-----------------------------"
+
+    # Search for the keyword in the domain file
+    if [ -f "$COMMAND_DIR/$domain" ]; then
+        awk -v keyword="$keyword" '/^-/{printf "- \033[0;34m%s\033[0m\n", $0; next} $0 ~ keyword {print "- \033[0;32m" $0 "\033[0m"}' "$COMMAND_DIR/$domain"
+    else
+        echo "No matching commands found in the '$domain' domain."
+    fi
+}
+
+# Main script
+case "$1" in
+    "save")
+        shift
+        save_command "$@"
+        ;;
+    "list")
+        shift
+        list_commands "$@"
+        ;;
+    "search")
+        shift
+        search_command "$@"
+        ;;
+    *)
+        echo "Usage: $0 [save -d <domain> -c <command> -t <description> | list -d <domain> | search -d <domain> -k <keyword>]"
+        ;;
+esac
