@@ -120,6 +120,10 @@ search_command() {
     fi
 }
 
+help_content="Usage:     
+\t${GREEN}cask save -d <domain> -c <command_to_save> -t <description> \n
+\tcask list -d <domain> \n
+\tcask search -d <domain> -k <keywork_to_search>${NC}"
 # Main script
 case "$1" in
     "save")
@@ -134,7 +138,11 @@ case "$1" in
         shift
         search_command "$@"
         ;;
+    "--help")
+        echo -e $help_content
+        ;;
     *)
-        echo "Usage: $0 [save -d <domain> -c <command> -t <description> | list -d <domain> | search -d <domain> -k <keyword>]"
+        echo -e "Store commands in a smart way \n$help_content"
         ;;
 esac
+
