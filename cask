@@ -7,8 +7,6 @@ COMMAND_DIR="${HOME}/Documents/MyTools/Cask/Commands"
 
 # ANSI escape codes for colors
 GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-MAGENTA='\033[0;35m'
 NC='\033[0m'  # No Color
 RED='\033[0;31m'
 
@@ -120,7 +118,7 @@ search_command() {
     fi
 }
 
-help_content="Usage:     
+help_content="Store commands in a smart way \nUsage:     
 \t${GREEN}cask save -d <domain> -c <command_to_save> -t <description> \n
 \tcask list -d <domain> \n
 \tcask search -d <domain> -k <keywork_to_search>${NC}"
@@ -138,11 +136,8 @@ case "$1" in
         shift
         search_command "$@"
         ;;
-    "--help")
-        echo -e $help_content
-        ;;
     *)
-        echo -e "Store commands in a smart way \n$help_content"
+        echo -e "$help_content"
         ;;
 esac
 

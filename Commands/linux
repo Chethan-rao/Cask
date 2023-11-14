@@ -1,0 +1,132 @@
+[0;32m- Run previous command with sudo:[0m 
+ 	[31msudo !!
+[0m
+[0;32m- Run ls:[0m 
+ 	[31ml
+[0m
+[0;32m- ls with file permissions:[0m 
+ 	[31mls -l
+[0m
+[0;32m- Recursively list all files:[0m 
+ 	[31mls -R
+[0m
+[0;32m- Switch User. Switch to root account:[0m 
+ 	[31msudo su
+[0m
+[0;32m- Switch back into user account from root account:[0m 
+ 	[31msu [0m[34muser-name[0m[31m
+[0m
+[0;32m- Install a package using apt-get:[0m 
+ 	[31msudo apt-get install [0m[34mpackage_name[0m[31m
+[0m
+[0;32m- Remove a package using apt-get:[0m 
+ 	[31msudo apt-get remove [0m[34mpackage_name[0m[31m
+[0m
+[0;32m- Upgrade any new packages in the repository:[0m 
+ 	[31msudo apt-get upgrade
+[0m
+[0;32m- Search for a package in Ubuntu repository:[0m 
+ 	[31mapt-cache search [0m[34mpackage_name[0m[31m
+[0m
+[0;32m- Information about a package:[0m 
+ 	[31mapt-cache policy [0m[34mpackage_name[0m[31m
+[0m
+[0;32m- Install a .deb file using dpkg:[0m 
+ 	[31mdpkg -i [0m[34mpackage_name.deb[0m[31m
+[0m
+[0;32m- Delete all files inside a directory without deleting the directory itself:[0m 
+ 	[31mrm *
+[0m
+[0;32m- Delete folder with files in it:[0m 
+ 	[31mrm -rf [0m[34mdirectory_name[0m[31m
+[0m
+[0;32m- Move files from source to destination:[0m 
+ 	[31mmv [0m[34msource[0m[31m [0m[34mdest[0m[31m
+[0m
+[0;32m- Rename file1.txt to file2.txt:[0m 
+ 	[31mmv file1.txt file2.txt
+[0m
+[0;32m- Real-time info about running processes:[0m 
+ 	[31mtop
+[0m
+[0;32m- Sort processes by CPU intensive tasks:[0m 
+ 	[31mtop -o cpu
+[0m
+[0;32m- Sort processes by memory intensive tasks:[0m 
+ 	[31mtop -o mem
+[0m
+[0;32m- Snapshot of the info about the running processes:[0m 
+ 	[31mps
+[0m
+[0;32m- More detailed info about running processes:[0m 
+ 	[31mps aux
+[0m
+[0;32m- Kill all instances of a process:[0m 
+ 	[31mkillall [0m[34mprocess-name[0m[31m
+[0m
+[0;32m- Start a service:[0m 
+ 	[31msudo service [0m[34mservice_name[0m[31m start
+[0m
+[0;32m- Stop a service:[0m 
+ 	[31msudo service [0m[34mservice_name[0m[31m stop
+[0m
+[0;32m- Edit crontab:[0m 
+ 	[31mcrontab -e
+[0m
+[0;32m- List all cron jobs:[0m 
+ 	[31mcrontab -l
+[0m
+[0;32m- View private IP when connected to router (Wi-Fi):[0m 
+ 	[31mifconfig en0
+[0m
+[0;32m- View private IP when connected to Ethernet:[0m 
+ 	[31mifconfig en1
+[0m
+[0;32m- View public IP using curl:[0m 
+ 	[31mcurl ifconfig.me | curl ifconfig.co
+[0m
+[0;32m- Recursively search for file which contains 'file_name':[0m 
+ 	[31mfd "file_name" [0m[34mpath_to_search[0m[31m
+[0m
+[0;32m- View PID of process using PORT:[0m 
+ 	[31mlsof -i :[0m[34mPORT[0m[31m
+[0m
+[0;32m- View PORT of process using PID:[0m 
+ 	[31mlsof -i -P -n | grep LISTEN | grep [0m[34mPID[0m[31m
+[0m
+[0;32m- Query DNS server for IP address using host-name:[0m 
+ 	[31mnslookup [0m[34mhost-name[0m[31m
+[0m
+[0;32m- View open ports in ip_addr:[0m 
+ 	[31mnmap [0m[34mip_addr[0m[31m
+[0m
+[0;32m- Connect remotely to the server:[0m 
+ 	[31mssh user-name:host
+[0m
+[0;32m- Transfer files to and from remote server using sftp:[0m 
+ 	[31msftp user-name:host
+[0m
+[0;32m- View the last line content of file in real-time. Good for viewing logs:[0m 
+ 	[31mtail -f [0m[34mfile_name[0m[31m
+[0m
+[0;32m- View free disk space left:[0m 
+ 	[31mdf -ah
+[0m
+[0;32m- View size of a directory:[0m 
+ 	[31mdu -sh path/to/directory
+[0m
+[0;32m- Change owner and group of a file:[0m 
+ 	[31mchown [0m[34mowner[0m[31m:[0m[34mgroup[0m[31m [0m[34mfile[0m[31m
+[0m
+[0;32m- Run Command in the background:[0m 
+ 	[31m[0m[34mCommand[0m[31m &
+[0m
+[0;32m- List all jobs:[0m 
+ 	[31mjobs
+[0m
+[0;32m- Continue job in foreground:[0m 
+ 	[31mfg [0m[34mJob_id[0m[31m
+[0m
+[0;32m- Continue job in background:[0m 
+ 	[31mbg [0m[34mJob_id[0m[31m
+[0m

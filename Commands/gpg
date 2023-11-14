@@ -4,9 +4,9 @@
 [0;32m- The recipient imports your public key into their GPG keyring. This keyring is essentially a collection of GPG keys that can be used for encryption and verification.:[0m 
  	[31mgpg --import [0m[34mrecipient_public_key.asc[0m[31m
 [0m
-[0;32m- The recipient wants to send you an encrypted document. They use your public key from their keyring to encrypt the document. When they encrypt the document, they use your public key as the recipient's key. This means that the document can only be decrypted using the corresponding private key, which only you possess.:[0m 
+[0;32m- The recipient wants to send you an encrypted document. They use your public key from their keyring to encrypt the document. When they encrypt the document, they use your public key as the recipients key. This means that the document can only be decrypted using the corresponding private key, which only you possess.:[0m 
  	[31mgpg --recipient [0m[34mRECEIVER_name[0m[31m --encrypt [0m[34mdocument.txt[0m[31m   |   gpg -e --recipient-file [0m[34mRECEIVER_PUBLIC_KEY_FILE[0m[31m [0m[34mdocument.txt[0m[31m
 [0m
-[0;32m- When you receive the encrypted document, you use your own GPG private key to decrypt it. The GPG software uses your private key to unlock and decrypt the document because it's the only key that corresponds to the public key used for encryption.:[0m 
+[0;32m- When you receive the encrypted document, you use your own GPG private key to decrypt it. The GPG software uses your private key to unlock and decrypt the document because its the only key that corresponds to the public key used for encryption.:[0m 
  	[31mgpg --decrypt [0m[34mencrypted_doc.gpg[0m[31m
 [0m
