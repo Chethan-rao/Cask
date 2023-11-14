@@ -10,6 +10,8 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
+                cd ./Commands
+                pwd
                 '''
             }
         }
@@ -17,6 +19,7 @@ pipeline {
             steps {
                 echo "Testing.."
                 sh '''
+                pwd
                 '''
             }
         }
@@ -25,8 +28,9 @@ pipeline {
                 echo 'Deliver....'
                 sh '''
                 echo "doing delivery stuff.."
-                '''
                 cat cask
+                '''
+                
             }
         }
     }
