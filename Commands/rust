@@ -1,0 +1,6 @@
+[0;32m- Free up disk space by cleaning all node deps:[0m 
+ 	[31mcargo wipe node
+[0m
+[0;32m- Free up disk space by cleaning all rust deps:[0m 
+ 	[31mcargo wipe rust -w
+[0m

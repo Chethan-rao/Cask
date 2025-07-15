@@ -100,9 +100,6 @@
 [0;32m- View open ports in ip_addr:[0m 
  	[31mnmap [0m[34mip_addr[0m[31m
 [0m
-[0;32m- Connect remotely to the server:[0m 
- 	[31mssh user-name:host
-[0m
 [0;32m- Transfer files to and from remote server using sftp:[0m 
  	[31msftp user-name:host
 [0m
@@ -130,3 +127,14 @@
 [0;32m- Continue job in background:[0m 
  	[31mbg [0m[34mJob_id[0m[31m
 [0m
+[0;32m- Get publi Ipv4 or Ipv6 address:[0m 
+ 	[31mcurl -6 | -4 icanhazip.com
+[0m
+[0;32m- Connect remotely to the server:[0m 
+ 	[31mssh-add <private_key>
+[0m
+[0;32m- Connect remotely to the server:[0m 
+ 	[31mssh -i <private-key-file> user-name@host
+[0m
+
+

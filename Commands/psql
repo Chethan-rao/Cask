@@ -1,0 +1,17 @@
+[0;32m- dump the whole DB schema along with tables, schemas, indexes as well as data in table:[0m 
+ 	[31mpg_dump -U [0m[34mchethan.rao[0m[31m -d [0m[34mlocker[0m[31m --column-inserts greater_than [0m[34mtest.sql[0m[31m
+[0m
+[0;32m- extract the data inside table as insert queries:[0m 
+ 	[31mpg_dump -U chethan.rao -d [0m[34mdb_name[0m[31m -t [0m[34mtable_name[0m[31m --data-only --column-inserts
+[0m
+[0;32m- apply this dump to a PostgreSQL database:[0m 
+ 	[31mpsql -U [0m[34myour_username[0m[31m -d [0m[34mtarget_database_name[0m[31m -f [0m[34myour_table_dump.sql[0m[31m
+[0m
+[0;32m- save the dump based on some condition:[0m 
+ 	[31m
+	1. CREATE TABLE public.entity_export_intermediate AS SELECT * FROM public.entity WHERE id = '42'; 
+	2. pg_dump --host=localhost --port=5432 --username=chethan.rao --dbname=locker --data-only
+	--table=public.entity_export_intermediate --inserts | sed 's/INSERT INTO public\.entity_export_intermediate/INSERT INTO
+	public.entity/' greater_than entity_id_42_data.sql
+	3. DROP TABLE entity_export_intermediate;
+[0m

@@ -1,0 +1,84 @@
+[0;32m- Starts a 1 node cluster locally using docker as a hypervisor:[0m 
+ 	[31mminikube start --vm-driver=docker
+[0m
+[0;32m- Get the status of cluster:[0m 
+ 	[31mminikube status
+[0m
+[0;32m- Tool used to switch between contexts (clusters):[0m 
+ 	[31mkubectx
+[0m
+[0;32m- Switch to the given cluster name:[0m 
+ 	[31mkubectx [0m[34mCLUSTER_NAME[0m[31m
+[0m
+[0;32m- Get current working cluster:[0m 
+ 	[31mkubectx -c
+[0m
+[0;32m- Switch to previous working cluster:[0m 
+ 	[31mkubectx -
+[0m
+[0;32m- Rename cluster context names:[0m 
+ 	[31mkubectx [0m[34mNEW_CLUSTER_NAME[0m[31m=[0m[34mOLD_CLUSTER_NAME[0m[31m
+[0m
+[0;32m- Tool used to switch between namespaces:[0m 
+ 	[31mkubens
+[0m
+[0;32m- Switch to the given namespace:[0m 
+ 	[31mkubens [0m[34mNAMESPACE[0m[31m
+[0m
+[0;32m- Get current working namespace:[0m 
+ 	[31mkubens -c
+[0m
+[0;32m- List all nodes in current cluster:[0m 
+ 	[31mkubectl get nodes
+[0m
+[0;32m- List all pods in current cluster:[0m 
+ 	[31mkubectl get pods -o wide
+[0m
+[0;32m- List all services in current cluster:[0m 
+ 	[31mkubectl get services
+[0m
+[0;32m- List all deployments in current cluster:[0m 
+ 	[31mkubectl get deployment
+[0m
+[0;32m- Gets the current config file of given deployment:[0m 
+ 	[31mkubectl get deployment [0m[34mDEPLOYMENT_NAME[0m[31m -o yaml
+[0m
+[0;32m- List all the replica set:[0m 
+ 	[31mkubectl get replicaset
+[0m
+[0;32m- Gets all the components inside a cluster:[0m 
+ 	[31mkubectl get all
+[0m
+[0;32m- Get all namespaces in current cluster:[0m 
+ 	[31mkubectl get namespaces
+[0m
+[0;32m- Creates a deployment which creates 1 pod with given name pulling the given image:[0m 
+ 	[31mkubectl create deployment [0m[34mDEPLOYMENT_NAME[0m[31m --image=[0m[34mIMAGE_NAME[0m[31m
+[0m
+[0;32m- Get the logs of the given pod:[0m 
+ 	[31mkubectl logs [0m[34mPOD_NAME[0m[31m
+[0m
+[0;32m- Get the events happening inside given pod. Similar to inspect in docker:[0m 
+ 	[31mkubectl describe pod [0m[34mPOD_NAME[0m[31m
+[0m
+[0;32m- Exec inside given pod:[0m 
+ 	[31mkubectl exec -it [0m[34mPOD_NAME[0m[31m — bash
+[0m
+[0;32m- If component is Deployment then deletes deployment, replica_sets and pods under given deployment_name:[0m 
+ 	[31mkubectl delete [0m[34mCOMPONENT[0m[31m [0m[34mCOMPONENT_NAME[0m[31m
+[0m
+[0;32m- Takes in configuration file and creates/updates the resources mentioned in the file:[0m 
+ 	[31mkubectl apply -f [0m[34mYAML_FILE[0m[31m
+[0m
+[0;32m- Delete the components mentioned in YAML file:[0m 
+ 	[31mkubectl delete -f [0m[34mYAML_FILE[0m[31m
+[0m
+[0;32m- Lists all the components available in k8s:[0m 
+ 	[31mkubectl api-resources
+[0m
+[0;32m- View kubeconfig file:[0m 
+ 	[31mkubectl config view
+[0m
+[0;32m- Forwars local ports to a pod:[0m 
+ 	[31mk port-forward services/[0m[34mSERVICE_NAME[0m[31m [0m[34mHOST_PORT[0m[31m:[0m[34mSERVICE_PORT[0m[31m
+[0m

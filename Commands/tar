@@ -1,0 +1,9 @@
+[0;32m- Combine 2 or more files and compress(zip) it:[0m 
+ 	[31mtar -zcvf [0m[34mOUTPUT_FILE.tar[0m[31m [0m[34mFILE1[0m[31m [0m[34mFILE2[0m[31m
+[0m
+[0;32m- Decompress(Unzip) and get the inner files:[0m 
+ 	[31mtar -zxvf [0m[34mZIP_FILE.tar.gz[0m[31m
+[0m
+[0;32m- List contents of tar file:[0m 
+ 	[31mtar -tf [0m[34mTAR_FILE[0m[31m
+[0m

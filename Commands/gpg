@@ -10,3 +10,12 @@
 [0;32m- When you receive the encrypted document, you use your own GPG private key to decrypt it. The GPG software uses your private key to unlock and decrypt the document because its the only key that corresponds to the public key used for encryption.:[0m 
  	[31mgpg --decrypt [0m[34mencrypted_doc.gpg[0m[31m
 [0m
+[0;32m- Example of encryption:[0m 
+ 	[31mgpg --encrypt --armor --recipient shashank.attarde@juspay.in hyperswitch-migration.tar.gz
+[0m
+[0;32m- List your private keys:[0m 
+ 	[31m gpg --list-secret-keys --keyid-format=long
+[0m
+[0;32m- Decrypt a compressed zip file:[0m 
+ 	[31mgpg -d -o [0m[34mOUTPUT_FILE.tar.gz[0m[31m [0m[34mINPUT_FILE.tar.gz.gpg[0m[31m
+[0m
